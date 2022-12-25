@@ -10,7 +10,13 @@ public class PlayerMove : MonoBehaviour, IDragHandler
     private bool start = false;
     public float speed;
     public Animator playerAnim;
-    
+    public static PlayerMove instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
         Vector3 pos = character.position;
