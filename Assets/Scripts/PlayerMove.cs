@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour, IDragHandler
     public GameObject myPlayer;
     private bool start = false;
     public float speed;
+    public Animator playerAnim;
     
     void IDragHandler.OnDrag(PointerEventData eventData)
     {
@@ -30,7 +31,10 @@ public class PlayerMove : MonoBehaviour, IDragHandler
         }
         if (start == true)
         {
+            playerAnim.SetBool("isRunning", true);
            myPlayer.gameObject.transform.Translate(0, 0, speed * Time.deltaTime);
         }
     }
+
+
 }
