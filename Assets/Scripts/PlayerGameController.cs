@@ -33,6 +33,7 @@ public class PlayerGameController : MonoBehaviour
     }
     */
     #endregion
+    public SkinnedMeshRenderer playerMash;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -41,6 +42,7 @@ public class PlayerGameController : MonoBehaviour
             Debug.Log("Obstacle Carptý");
             other.gameObject.transform.GetComponent<BoxCollider>().isTrigger = false;
             PlayerMove.instance.playerAnim.SetBool("isDeath", true);
+            Invoke("StopTime", 2.0f);
         }
 
 
@@ -63,12 +65,26 @@ public class PlayerGameController : MonoBehaviour
         {
             Debug.Log("Protect Carptý");
             Destroy(other.gameObject, 0.25f);
+            StartCoroutine(PowerUpProtect());
         }
 
     }
     IEnumerator PowerUpSpeed()
     {
-        PlayerMove.instance.speed += PlayerMove.instance.speed;
-        yield return null;
+        PlayerMove.instance.playerAnim.SetBool("isFast", true);
+        PlayerMove.instance.speed = 10;
+        yield return new WaitForSeconds(2);
+        PlayerMove.instance.playerAnim.SetBool("isFast", false);
+        PlayerMove.instance.speed = 5;
+    }
+    IEnumerator PowerUpProtect()
+    {
+        playerMash.material.color = Color.red;
+        yield return new WaitForSeconds(2);
+        playerMash.material.color = Color.white;
+    }
+    void StopTime()
+    {
+        Time.timeScale = 0;
     }
 }

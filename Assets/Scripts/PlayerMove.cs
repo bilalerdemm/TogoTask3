@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour, IDragHandler
     public Transform character, child;
     public GameObject myPlayer;
     private bool start = false;
-    public float speed;
+    public float speed = 5.0f;
     public Animator playerAnim;
     public static PlayerMove instance;
 
