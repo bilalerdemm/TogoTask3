@@ -34,15 +34,19 @@ public class PlayerGameController : MonoBehaviour
     */
     #endregion
     public SkinnedMeshRenderer playerMash;
+    private bool isProtecting = false;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Obstacle"))
         {
-            Debug.Log("Obstacle Carptý");
-            other.gameObject.transform.GetComponent<BoxCollider>().isTrigger = false;
-            PlayerMove.instance.playerAnim.SetBool("isDeath", true);
-            Invoke("StopTime", 2.0f);
+            if (isProtecting == false)
+            {
+                Debug.Log("Obstacle Carptý");
+                other.gameObject.transform.GetComponent<BoxCollider>().isTrigger = false;
+                PlayerMove.instance.playerAnim.SetBool("isDeath", true);
+                Invoke("StopTime", 3.0f);
+            }
         }
 
 
@@ -79,9 +83,13 @@ public class PlayerGameController : MonoBehaviour
     }
     IEnumerator PowerUpProtect()
     {
+        isProtecting = true;
         playerMash.material.color = Color.red;
+        transform.GetComponent<BoxCollider>().isTrigger = true;
         yield return new WaitForSeconds(2);
+        transform.GetComponent<BoxCollider>().isTrigger = false; 
         playerMash.material.color = Color.white;
+        isProtecting = false;
     }
     void StopTime()
     {
