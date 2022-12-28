@@ -46,7 +46,7 @@ public class PlayerGameController : MonoBehaviour
                 Debug.Log("Obstacle Carptý");
                 other.gameObject.transform.GetComponent<BoxCollider>().isTrigger = false;
                 PlayerMove.instance.playerAnim.SetBool("isDeath", true);
-                Invoke("StopTime", 3.0f);
+                Invoke("LoseTime", 3.0f);
             }
         }
 
@@ -73,6 +73,11 @@ public class PlayerGameController : MonoBehaviour
             StartCoroutine(PowerUpProtect());
         }
 
+        if (other.transform.CompareTag("Finish"))
+        {
+            WinTime();
+        }
+
     }
     IEnumerator PowerUpSpeed()
     {
@@ -92,9 +97,14 @@ public class PlayerGameController : MonoBehaviour
         playerMash.material.color = Color.white;
         isProtecting = false;
     }
-    void StopTime()
+    void LoseTime()
     {
         Time.timeScale = 0;
         losePanel.SetActive(true);
+    }
+    void WinTime()
+    {
+        Time.timeScale = 0;
+        winPanel.SetActive(true);
     }
 }

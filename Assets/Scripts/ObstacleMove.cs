@@ -6,7 +6,7 @@ public class ObstacleMove : MonoBehaviour
 {
     public float distanceToCover;
     public float speed;
-    public bool isHorizontal = false;
+    public bool isVertical = false;
 
     private Vector3 startingPosition;
     void Start()
@@ -16,7 +16,7 @@ public class ObstacleMove : MonoBehaviour
 
     void Update()
     {
-        if (isHorizontal)
+        if (isVertical)
         {
             Vector3 v = startingPosition;
             v.z += distanceToCover * Mathf.Sin(Time.time * speed);
