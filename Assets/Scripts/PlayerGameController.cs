@@ -35,7 +35,7 @@ public class PlayerGameController : MonoBehaviour
     #endregion
     public SkinnedMeshRenderer playerMash;
     private bool isProtecting = false;
-    public GameObject winPanel, losePanel;
+    public GameObject winPanel, losePanel,restartButton;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -97,14 +97,17 @@ public class PlayerGameController : MonoBehaviour
         playerMash.material.color = Color.white;
         isProtecting = false;
     }
+
     void LoseTime()
     {
         Time.timeScale = 0;
         losePanel.SetActive(true);
+        restartButton.SetActive(true);
     }
     void WinTime()
     {
         Time.timeScale = 0;
         winPanel.SetActive(true);
+        restartButton.SetActive(true);
     }
 }
