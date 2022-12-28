@@ -2082,6 +2082,7 @@ GameObject:
   - component: {fileID: 712364533}
   - component: {fileID: 712364532}
   - component: {fileID: 712364531}
+  - component: {fileID: 712364535}
   m_Layer: 0
   m_Name: Obstacle (1)
   m_TagString: Obstacle
@@ -2167,6 +2168,20 @@ Transform:
   m_Father: {fileID: 992927280}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &712364535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712364530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95772458472f1644d835146ebfe45fd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distanceToCover: 1
+  speed: 2
 --- !u!1 &787133880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2509,6 +2524,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMash: {fileID: 1197857834}
+  winPanel: {fileID: 1633842180}
+  losePanel: {fileID: 1013481965}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

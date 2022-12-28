@@ -35,6 +35,7 @@ public class PlayerGameController : MonoBehaviour
     #endregion
     public SkinnedMeshRenderer playerMash;
     private bool isProtecting = false;
+    public GameObject winPanel, losePanel;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -94,5 +95,6 @@ public class PlayerGameController : MonoBehaviour
     void StopTime()
     {
         Time.timeScale = 0;
+        losePanel.SetActive(true);
     }
 }
