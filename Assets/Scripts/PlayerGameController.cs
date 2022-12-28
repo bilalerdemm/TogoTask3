@@ -75,7 +75,7 @@ public class PlayerGameController : MonoBehaviour
 
         if (other.transform.CompareTag("Finish"))
         {
-            WinTime();
+            Invoke("WinTime", 0.5f);
         }
 
     }
