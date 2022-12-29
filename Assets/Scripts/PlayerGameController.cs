@@ -46,7 +46,7 @@ public class PlayerGameController : MonoBehaviour
                 Debug.Log("Obstacle Carptý");
                 other.gameObject.transform.GetComponent<BoxCollider>().isTrigger = false;
                 PlayerMove.instance.playerAnim.SetBool("isDeath", true);
-                Invoke("LoseTime", 3.0f);
+                StartCoroutine(LoseTime());
             }
         }
 
@@ -75,7 +75,7 @@ public class PlayerGameController : MonoBehaviour
 
         if (other.transform.CompareTag("Finish"))
         {
-            Invoke("WinTime", 0.5f);
+            StartCoroutine(WinTime());
         }
 
     }
@@ -98,14 +98,17 @@ public class PlayerGameController : MonoBehaviour
         isProtecting = false;
     }
 
-    void LoseTime()
+    IEnumerator LoseTime()
     {
+        yield return new WaitForSeconds(3);
         Time.timeScale = 0;
         losePanel.SetActive(true);
         restartButton.SetActive(true);
     }
-    void WinTime()
+
+    IEnumerator WinTime()
     {
+        yield return new WaitForSeconds(1);
         Time.timeScale = 0;
         winPanel.SetActive(true);
         restartButton.SetActive(true);
