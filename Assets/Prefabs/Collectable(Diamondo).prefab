@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1316264211215222472}
   - component: {fileID: 1405399439719148974}
   - component: {fileID: 1405399439719148961}
+  - component: {fileID: 4687860475012561818}
   m_Layer: 0
   m_Name: Collectable(Diamondo)
   m_TagString: Collectable
@@ -122,3 +123,16 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.1386092, y: 2.1671238, z: 3.2000003}
   m_Center: {x: 0, y: -0.00000005960466, z: 0}
+--- !u!114 &4687860475012561818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303357448603720714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f77cb6884ea3f46afeea158c851d92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectablesList: []
