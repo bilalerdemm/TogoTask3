@@ -43,7 +43,7 @@ public class PlayerGameController : MonoBehaviour
 
     private void Update()
     {
-        scoreText.text = score.ToString();
+        scoreText.text = "Score:" + score.ToString();
     }
     private void OnTriggerEnter(Collider other)
     {
