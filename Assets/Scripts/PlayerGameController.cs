@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerGameController : MonoBehaviour
 {
@@ -35,8 +36,15 @@ public class PlayerGameController : MonoBehaviour
     #endregion
     public SkinnedMeshRenderer playerMash;
     private bool isProtecting = false;
-    public GameObject winPanel, losePanel,restartButton;
+    public GameObject winPanel, losePanel,restartButton, scorePanel;
+    public int score = 0;
+    public Text scoreText;
 
+
+    private void Update()
+    {
+        scoreText.text = score.ToString();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Obstacle"))
@@ -54,6 +62,7 @@ public class PlayerGameController : MonoBehaviour
         if (other.transform.CompareTag("Collectable"))
         {
             Debug.Log("Collectable Carptý");
+            score = score + 1;
             Destroy(other.gameObject,0.25f);
         }
 
@@ -103,6 +112,7 @@ public class PlayerGameController : MonoBehaviour
         yield return new WaitForSeconds(3);
         Time.timeScale = 0;
         losePanel.SetActive(true);
+        scorePanel.SetActive(true);
         restartButton.SetActive(true);
     }
 
@@ -111,6 +121,7 @@ public class PlayerGameController : MonoBehaviour
         yield return new WaitForSeconds(1);
         Time.timeScale = 0;
         winPanel.SetActive(true);
+        scorePanel.SetActive(true);
         restartButton.SetActive(true);
     }
 }
